@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Explorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <script src="https://kit.fontawesome.com/9762e305c9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <h1><i class="fa-solid fa-car"></i> Explore Cars </h1>
+    </div>
+    <div id="search-bar">
+        <form action="/">
+            <input id="search-text" type="text" name="search" placeholder="Search cars..." required>
+            <input id="search-sub" type="submit" value="Go">
+        </form>
+        <div>
+        {% if search %}
+            Search results for '{{search}}'
+        {% endif %}
+        </div>
+    </div>
+    <div id="container">
+        <div id="sidebar">
+            <form action="/">
+            <div>> Sort by
+                <div><button type="submit" name="sort" value="price-asc">Price <i class="fa-solid fa-caret-up"></i></button></div>
+                <div><button type="submit" name="sort" value="price-desc">Price <i class="fa-solid fa-caret-down"></i></button></div>
+                <div><button type="submit" name="sort" value="safety">Safety rating</button></div>
+                <div><button type="submit" name="sort" value="sales">Best selling</button></div>
+            </div>
+            <!-- <div>>Filter by
+                <div><button>brand</button></div>
+                <div><button>segment</button></div>
+            </div> -->
+            </form>
+        </div>
+        <div id="content">
+            {% if number>0 %}
+                {% for car in cars %}
+                <a href="/car/{{car.car_id}}">
+                <div class="card">
+                    <div class="img">{% if car.image %}<img src="{{ url_for('static', filename='media/'+car.image) }}">{% else %}No image found{% endif %}</div>
+                    <div class="card-text"><strong>{{car.brand_name}} {{car.car_name}}</strong></div>
+                    <div class="card-text">Price: {% if car.price>10000000%}{{ car.price / 10000000 }}CR {% else %}{{car.price/100000}}LAKH{% endif %}</div>
+                    <div class="card-text">Launch year: {{car.launch_date}}</div>
+                    <div class="card-text">Safety rating: {{car.safety_rating}}</div>
+                    <div class="card-text">Sold units: {{car.sales_count}}</div>
+                </div>
+                </a>
+                {% endfor %}
+            {% else %}
+                <p>No cars found</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div id="footer">
+        <h1>Footer</h1>
+    </div>
+</body>
+</html>

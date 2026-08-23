@@ -1,0 +1,237 @@
+:root {
+    --bg: rgb(14, 18, 24);
+    --secondary-bg: rgb(28, 35, 45);
+    --more-secondary-bg: rgb(42, 52, 66);
+    --content: rgb(225, 232, 240);
+    --border: rgb(65, 105, 145);
+    --select: rgba(80, 170, 255, 0.25);
+    --headings: arial, "consolas", sans-serif;
+    --normal-text: "consolas";
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--content);
+}
+
+h1 {
+    margin-right: auto;
+    font-family: var(--headings);
+    margin:0;
+}
+
+#header {
+    background-color:var(--secondary-bg);
+    margin: 0;
+    padding: 5px;
+    border-bottom: 2px solid var(--border);
+}
+
+#search-bar {
+    width: fit-content;
+    margin: 18px auto;
+}
+
+#search-bar form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#search-text {
+    width: 320px;
+    height: 38px;
+    box-sizing: border-box;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    background: var(--secondary-bg);
+    color: var(--content);
+
+    font-family: var(--normal-text);
+    font-size: 15px;
+
+    outline: none;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+#search-text::placeholder {
+    color: var(--content);
+}
+
+#search-text:focus {
+    border-color: var(--select);
+}
+
+#search-sub {
+    height: 38px;
+    padding: 0 16px;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    background: var(--secondary-bg);
+    color: var(--content);
+
+    font-family: var(--headings);
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#search-sub:hover {
+    background: var(--select);
+}
+
+#search-sub:active {
+    background: var(--more-secondary-bg);
+}
+
+#search-bar div {
+    font-family: var(--normal-text);
+    margin-top: 5px;
+}
+
+#search-goback:hover {
+    background: var(--select);
+}
+
+#container {
+    display: flex;
+    justify-content: flex-start;
+    min-height: 90vh;
+}
+
+#sidebar {
+    position: sticky;
+    top: 10px;
+    left: 0;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--secondary-bg);
+    font-family: var(--normal-text);
+    width: 15%;
+    height: 75vh;
+}
+#sidebar button {
+    border-radius: 3px;
+    background-color: transparent;
+    border: 0px;
+    color: var(--content);
+    text-align: left;
+    font-size: 15px;
+    width: 120px;
+    padding: 7px;
+}
+#sidebar button:hover {
+    background: hsla(0, 0%, 100%, 0.212);
+}
+
+#sidebar div {
+    background-color: var(--more-secondary-bg);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#content {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#content p {
+    font-family: var(--normal-text);
+    font-size: 20px;
+    margin-top: 200px;
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.card {
+    text-decoration: none;
+    color: var(--content);
+    min-height: 250px;
+    width: 230px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: linear-gradient(var(--secondary-bg), var(--more-secondary-bg));
+    transition: background 0.5s linear;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.card:hover {
+  background: linear-gradient(var(--secondary-bg), var(--select));
+}
+
+.card-text {
+    font-family: var(--normal-text);
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--content);
+    margin: 5px;
+}
+
+.img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--more-secondary-bg);
+    border-radius: 5px;
+    height: 150px;
+    width: 220px;
+    overflow: hidden;
+}
+
+.img img {
+    max-height: 100%;
+}
+
+#footer {
+    border-top: 2px solid var(--border);
+    padding: 5px;
+    background-color: var(--secondary-bg);
+}
+
+@media (max-width: 600px) {
+
+    #container {
+        flex-direction: column;
+    }
+
+    #sidebar {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 10px;
+    }
+
+    #content {
+        width: auto;
+        margin: 10px;
+        justify-content: center;
+    }
+
+}
