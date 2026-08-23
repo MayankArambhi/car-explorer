@@ -43,7 +43,7 @@
                 <a href="/car/{{car.car_id}}">
                 <div class="card">
                     <div class="img">{% if car.image %}<img src="{{ url_for('static', filename='media/'+car.image) }}">{% else %}No image found{% endif %}</div>
-                    <div class="card-text"><strong>{{car.brand_name}} {{car.car_name}}</strong></div>
+                    <div class="card-text"><strong>{{car.brand_name}}<br>{{car.car_name}}</strong></div>
                     <div class="card-text">Price: {% if car.price>10000000%}{{ car.price / 10000000 }}CR {% else %}{{car.price/100000}}LAKH{% endif %}</div>
                     <div class="card-text">Launch year: {{car.launch_date}}</div>
                     <div class="card-text">Safety rating: {{car.safety_rating}}</div>
