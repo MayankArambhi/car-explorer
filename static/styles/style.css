@@ -118,8 +118,8 @@ h1 {
     border-radius: 7px;
     background: var(--secondary-bg);
     font-family: var(--normal-text);
-    width: 15%;
-    height: 75vh;
+    width: 230px;
+    height: 200px;
 }
 #sidebar button {
     border-radius: 3px;
@@ -176,6 +176,10 @@ a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline dotted;
 }
 
 .card:hover {

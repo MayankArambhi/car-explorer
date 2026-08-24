@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="header">
-        <h1><i class="fa-solid fa-car"></i> Explore Cars </h1>
+        <h1><i class="fa-solid fa-car"></i> Explore {% if brand_name %}{{brand_name}}{% else %}Cars{% endif %}</h1>
     </div>
     <div id="search-bar">
         <form action="/">
@@ -40,16 +40,16 @@
         <div id="content">
             {% if number>0 %}
                 {% for car in cars %}
-                <a href="/car/{{car.car_id}}">
+                
                 <div class="card">
                     <div class="img">{% if car.image %}<img src="{{ url_for('static', filename='media/'+car.image) }}">{% else %}No image found{% endif %}</div>
-                    <div class="card-text"><strong>{{car.brand_name}}<br>{{car.car_name}}</strong></div>
-                    <div class="card-text">Price: {% if car.price>10000000%}{{ car.price / 10000000 }}CR {% else %}{{car.price/100000}}LAKH{% endif %}</div>
+                    <div class="card-text"><strong><a href="/brand/{{car.brand_id}}">{{car.brand_name}}</a><br><a href="/car/{{car.car_id}}">{{car.car_name}}</a></strong></div>
+                    <div class="card-text">Price: {% if car.price>=10000000%}{{ car.price / 10000000 }}CR {% else %}{{car.price/100000}}LAKH{% endif %}</div>
                     <div class="card-text">Launch year: {{car.launch_date}}</div>
                     <div class="card-text">Safety rating: {{car.safety_rating}}</div>
                     <div class="card-text">Sold units: {{car.sales_count}}</div>
                 </div>
-                </a>
+                
                 {% endfor %}
             {% else %}
                 <p>No cars found</p>
