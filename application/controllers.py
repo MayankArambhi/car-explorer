@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, redirect
 from application import app
 from application.database import db
 
@@ -28,7 +28,7 @@ def home():
     
     cars = db.session.execute(db.text(query)).all()
     l = len(list(cars))
-    return render_template("index.html", cars=cars, search=search, number = l)
+    return render_template("index.html", cars=cars, search=search, sort=sort, number = l)
 
 @app.route("/car/<int:car_id>")
 def car(car_id):
@@ -68,4 +68,4 @@ def brand(brand_id):
     cars = db.session.execute(db.text(query), {"brand_id": brand_id}).all()
     l = len(list(cars))
     brand_name = cars[0].brand_name
-    return render_template("index.html", cars=cars, search=search, number = l, brand_name=brand_name)
+    return render_template("brand.html", cars=cars, search=search, number = l, brand_name=brand_name, brand_id=brand_id)

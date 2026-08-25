@@ -29,13 +29,36 @@ h1 {
 }
 
 #search-bar {
-    width: fit-content;
-    margin: 18px auto;
+    display: flex;
+    margin: 18px 10px;
+}
+
+#home {
+    height: 38px;
+    padding: 0 16px;
+    margin-right: 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    background: var(--secondary-bg);
+    color: var(--content);
+
+    font-family: var(--headings);
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.fa-house {
+    margin-top: 9px;
 }
 
 #search-bar form {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     gap: 8px;
 }
 
@@ -100,6 +123,10 @@ h1 {
 
 #search-goback:hover {
     background: var(--select);
+}
+
+#search-result {
+    padding: 7px;
 }
 
 #container {

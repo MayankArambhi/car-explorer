@@ -9,10 +9,11 @@
 </head>
 <body>
     <div id="header">
-        <h1><i class="fa-solid fa-car"></i> Explore Cars</h1>
+        <h1><i class="fa-solid fa-car"></i> Explore {{brand_name}}</h1>
     </div>
     <div id="search-bar">
-        <form action="/">
+        <a href="/" id="home"><i class="fa-solid fa-house"></i></a>
+        <form action="/brand/{{brand_id}}">
             <input id="search-text" type="text" name="search" placeholder="Search cars..." required>
             <input id="search-sub" type="submit" value="Go">
         </form>
@@ -24,7 +25,7 @@
     </div>
     <div id="container">
         <div id="sidebar">
-            <form action="/">
+            <form action="/brand/{{brand_id}}">
             <div>> Sort by
                 <div><button type="submit" name="sort" value="price-asc">Price <i class="fa-solid fa-caret-up"></i></button></div>
                 <div><button type="submit" name="sort" value="price-desc">Price <i class="fa-solid fa-caret-down"></i></button></div>
@@ -43,7 +44,7 @@
                 
                 <div class="card">
                     <div class="img">{% if car.image %}<img src="{{ url_for('static', filename='media/'+car.image) }}">{% else %}No image found{% endif %}</div>
-                    <div class="card-text"><strong><a href="/brand/{{car.brand_id}}">{{car.brand_name}}</a><br><a href="/car/{{car.car_id}}">{{car.car_name}}</a></strong></div>
+                    <div class="card-text"><strong>{{car.brand_name}}<br><a href="/car/{{car.car_id}}">{{car.car_name}}</a></strong></div>
                     <div class="card-text">Price: {% if car.price>=10000000%}{{ car.price / 10000000 }}CR {% else %}{{car.price/100000}}LAKH{% endif %}</div>
                     <div class="card-text">Launch year: {{car.launch_date}}</div>
                     <div class="card-text">Safety rating: {{car.safety_rating}}</div>
