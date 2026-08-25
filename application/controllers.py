@@ -37,7 +37,6 @@ def car(car_id):
         from cars natural join brands
         where cars.car_id = :car_id
     """), {"car_id":car_id}).first()
-    print(car.car_name)
     return render_template("car.html", car=car)
 
 @app.route("/brand/<int:brand_id>")

@@ -148,6 +148,11 @@ h1 {
     width: 230px;
     height: 200px;
 }
+
+#sidebar:hover {
+    box-shadow: 0px 0px 7px var(--border);
+}
+
 #sidebar button {
     border-radius: 3px;
     background-color: transparent;
@@ -177,7 +182,7 @@ h1 {
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
 }
 
 #content p {
@@ -210,7 +215,8 @@ a:hover {
 }
 
 .card:hover {
-  background: linear-gradient(var(--secondary-bg), var(--select));
+    background: linear-gradient(var(--secondary-bg), var(--select));
+    box-shadow: 0px 0px 7px var(--border);
 }
 
 .card-text {
@@ -241,9 +247,16 @@ a:hover {
 }
 
 #footer {
+    text-align: center;
     border-top: 2px solid var(--border);
-    padding: 5px;
+    padding: 10px;
     background-color: var(--secondary-bg);
+    font-size: 15px;
+    font-family: var(--normal-text);
+}
+
+#footer a:hover {
+    color: black;
 }
 
 @media (max-width: 600px) {
