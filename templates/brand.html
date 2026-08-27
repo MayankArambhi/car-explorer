@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Explorer</title>
+    <title>{{brand.brand_name}}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     <script src="https://kit.fontawesome.com/9762e305c9.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="header">
-        <h1><i class="fa-solid fa-car"></i> Explore {{brand_name}}</h1>
+        <h1><i class="fa-solid fa-car"></i> Explore {{brand.brand_name}}</h1>
     </div>
     <div id="search-bar">
         <a href="/" id="home"><i class="fa-solid fa-house"></i></a>
-        <form action="/brand/{{brand_id}}">
-            <input id="search-text" type="text" name="search" placeholder="Search in {{brand_name}}..." required>
+        <form action="/brand/{{brand.brand_id}}">
+            <input id="search-text" type="text" name="search" placeholder="Search in {{brand.brand_name}}..." required>
             <input id="search-sub" type="submit" value="Go">
         </form>
         <div id="search-result">
@@ -63,10 +63,18 @@
         <div id="content">
             {% if number>0 %}
                 {% for car in cars %}
-                
                 <div class="card">
-                    <div class="img">{% if car.image %}<img src="{{ url_for('static', filename='media/'+car.image) }}">{% else %}No image found{% endif %}</div>
-                    <div class="card-text"><strong>{{car.brand_name}}<br><a href="/car/{{car.car_id}}">{{car.car_name}}</a></strong></div>
+                    <div class="img">
+                        {% if car.images %}
+                        <img src="{{ url_for('static', filename='media/'+car.images[0].path) }}" 
+                            title="{{car.brand_name}} {{car.car_name}}">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='media/cars/default.png') }}" 
+                            title="Image not available" 
+                            style="opacity: 30%;">
+                        {% endif %}
+                    </div>
+                    <div class="card-text"><strong>{{car.brand.brand_name}}<br><a href="/car/{{car.car_id}}">{{car.car_name}}</a></strong></div>
                     <div class="card-text">Price: {% if car.price>=10000000%}{{ car.price / 10000000 }}CR {% else %}{{car.price/100000}}LAKH{% endif %}</div>
                     <div class="card-text">Launch year: {{car.launch_date}}</div>
                     <div class="card-text">Safety rating: {{car.safety_rating}}</div>
@@ -79,7 +87,6 @@
             {% endif %}
         </div>
     </div>
-    <div class="divider"></div>
     <div id="footer">
         <a href="https://github.com/MayankArambhi" target="_blank"><i class="fa-brands fa-github"></i>/MayankArambhi</a>
     </div>

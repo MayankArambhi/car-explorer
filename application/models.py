@@ -8,11 +8,24 @@ class Brands(db.Model):
 class Cars(db.Model):
     __tablename__ = 'cars'
     car_id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
-    brand_id = db.Column(db.Integer, db.ForeignKey('brands.brand_id'))
     car_name = db.Column(db.String, nullable=False)
-    type = db.Column(db.String)
+    brand_id = db.Column(db.Integer, db.ForeignKey('brands.brand_id'))
+    type_id = db.Column(db.Integer, db.ForeignKey('types.type_id'))
+    images = db.relationship("Images", backref="car", lazy=True)
+    brand = db.relationship("Brands", backref="cars")
+    type = db.relationship("Types", backref="car")
     launch_date = db.Column(db.Integer)
     safety_rating = db.Column(db.Float)
     sales_count = db.Column(db.Integer)
     price = db.Column(db.Integer)
-    image = db.Column(db.String)
+
+class Images(db.Model):
+    __tablename__ = 'images'
+    image_id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
+    car_id = db.Column(db.Integer, db.ForeignKey('cars.car_id'))
+    path = db.Column(db.String)
+
+class Types(db.Model):
+    __tablename__ = 'types'
+    type_id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
+    type_name = db.Column(db.String)

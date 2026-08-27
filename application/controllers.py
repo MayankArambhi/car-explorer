@@ -1,6 +1,8 @@
 from flask import render_template, request, redirect
 from application import app
 from application.database import db
+from sqlalchemy import or_
+from application.models import Cars, Brands
 
 @app.route("/")
 def home():
@@ -10,24 +12,23 @@ def home():
         if char in search:
             search=""
             break
-    query = """
-        select * from
-        cars natural join brands 
-    """
+    cars = Cars.query.all()
     if sort:
         if sort=="price-asc":
-            query += "order by price asc"
+            cars = Cars.query.order_by(Cars.price.asc()).all()
         elif sort=="price-desc":
-            query += "order by price desc"
+            cars = Cars.query.order_by(Cars.price.desc()).all()
         elif sort=="safety":
-            query += "order by safety_rating desc"
+            cars = Cars.query.order_by(Cars.safety_rating.desc()).all()
         elif sort=="sales":
-            query += "order by sales_count desc"
+            cars = Cars.query.order_by(Cars.sales_count.desc()).all()
     elif search:
-        query += f"where car_name like '%{search}%' or brand_name like '%{search}%'"
-    
-    cars = db.session.execute(db.text(query)).all()
-    l = len(list(cars))
+        cars = Cars.query.filter(
+            or_(Cars.car_name.ilike(f"%{search}%"), 
+                Cars.brand.has(Brands.brand_name.ilike(f"%{search}%"))
+                )).all()
+
+    l = len(cars)
     return render_template("index.html", cars=cars, search=search, sort=sort, number = l)
 
 @app.route("/car/<int:car_id>")
@@ -47,24 +48,24 @@ def brand(brand_id):
         if char in search:
             search=""
             break
-    query = """
-        select * from
-        cars natural join brands
-        where cars.brand_id = :brand_id 
-    """
+
+    cars = Cars.query.filter_by(brand_id=brand_id)
+    brand = Brands.query.filter_by(brand_id=brand_id).first()
+    
     if sort:
         if sort=="price-asc":
-            query += "order by price asc"
+            cars = Cars.query.order_by(Cars.price.asc()).all()
         elif sort=="price-desc":
-            query += "order by price desc"
+            cars = Cars.query.order_by(Cars.price.desc()).all()
         elif sort=="safety":
-            query += "order by safety_rating desc"
+            cars = Cars.query.order_by(Cars.safety_rating.desc()).all()
         elif sort=="sales":
-            query += "order by sales_count desc"
+            cars = Cars.query.order_by(Cars.sales_count.desc()).all()
     elif search:
-        query += f"and car_name like '%{search}%'"
+        cars = Cars.query.filter(
+            or_(Cars.car_name.ilike(f"%{search}%"), 
+                Cars.brand.has(Brands.brand_name.ilike(f"%{search}%"))
+                )).all()
     
-    cars = db.session.execute(db.text(query), {"brand_id": brand_id}).all()
     l = len(list(cars))
-    brand_name = cars[0].brand_name
-    return render_template("brand.html", cars=cars, search=search, number = l, brand_name=brand_name, brand_id=brand_id)
+    return render_template("brand.html", cars=cars, search=search, number = l, brand=brand)

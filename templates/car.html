@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css')}}">
     <title>{{ car.brand_name }} {{ car.car_name }}</title>
 </head>
 <body>
-    <h1>{{ car.brand_name }} {{ car.car_name }}</h1>
-    <h2 style="color:darkred">Page under construction</h2>
+    <div id="header">
+        <h1>{{ car.brand_name }} {{ car.car_name }}</h1>
+    </div>
+    <div id="container">
+        <div id="content">
+            Content
+        </div>
+        <div id="sidebar">
+            Sidebar
+        </div>
+    </div>
     <a href="/">Go back</a>
+    <div id="footer">
+        <a href="https://github.com/MayankArambhi" target="_blank"><i class="fa-brands fa-github"></i>/MayankArambhi</a>
+    </div>
 </body>
 </html>
