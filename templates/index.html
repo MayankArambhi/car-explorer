@@ -25,17 +25,39 @@
     <div id="container">
         <div id="sidebar">
             <form action="/">
-            <div>> Sort by
-                <div><button type="submit" name="sort" value="price-asc">Price <i class="fa-solid fa-caret-up"></i></button></div>
-                <div><button type="submit" name="sort" value="price-desc">Price <i class="fa-solid fa-caret-down"></i></button></div>
-                <div><button type="submit" name="sort" value="safety">Safety rating</button></div>
-                <div><button type="submit" name="sort" value="sales">Best selling</button></div>
-            </div>
-            <!-- <div>>Filter by
-                <div><button>brand</button></div>
-                <div><button>segment</button></div>
-            </div> -->
+            <div class="sbheading">Sort by</div>
+            <div><button type="submit" name="sort" value="price-asc">Price <i class="fa-solid fa-caret-up"></i></button></div>
+            <div><button type="submit" name="sort" value="price-desc">Price <i class="fa-solid fa-caret-down"></i></button></div>
+            <div><button type="submit" name="sort" value="safety">Safety rating</button></div>
+            <div><button type="submit" name="sort" value="sales">Best selling</button></div>
             </form>
+            <!-- <form action="/">
+            <div class="sbheading">Filter by</div>
+            <div>
+                <select name="brand">
+                    <option value="M">Brand</option>
+                    {% for brand in brands %}
+                    <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <select name="segment">
+                    <option value="M">Segment</option>
+                    {% for brand in brands %}
+                    <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <select name="category">
+                    <option value="M">Category</option>
+                    {% for brand in brands %}
+                    <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            </form> -->
         </div>
         <div id="content">
             {% if number>0 %}
