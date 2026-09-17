@@ -29,3 +29,10 @@ class Types(db.Model):
     __tablename__ = 'types'
     type_id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
     type_name = db.Column(db.String)
+
+class Users(db.Model):
+    __tablename__ = 'users'
+    user_id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
+    username = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
+    password = db.Column(db.String, nullable=False)

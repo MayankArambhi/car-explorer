@@ -11,8 +11,9 @@
     <div id="header">
         <h1><i class="fa-solid fa-car"></i> Explore Cars</h1>
     </div>
+    <div id="wrapper">
     <div id="search-bar">
-        <form action="/">
+        <form id="car-form" action="/">
             <input id="search-text" type="text" name="search" placeholder="Search cars..." required>
             <input id="search-sub" type="submit" value="Go">
         </form>
@@ -21,16 +22,19 @@
             Search results for '{{search}}'
         {% endif %}
         </div>
+        <div id="logout-div" style="margin-top:0px" title="Logout">
+            <form action="/logout">
+                <button id="logout" type="submit"><i class="fa-solid fa-right-from-bracket"></i></button>
+            </form>
+        </div>
     </div>
     <div id="container">
         <div id="sidebar">
-            <form action="/">
             <div class="sbheading">Sort by</div>
-            <div><button type="submit" name="sort" value="price-asc">Price <i class="fa-solid fa-caret-up"></i></button></div>
-            <div><button type="submit" name="sort" value="price-desc">Price <i class="fa-solid fa-caret-down"></i></button></div>
-            <div><button type="submit" name="sort" value="safety">Safety rating</button></div>
-            <div><button type="submit" name="sort" value="sales">Best selling</button></div>
-            </form>
+            <div><button form="car-form" type="submit" name="sort" value="price-asc">Price <i class="fa-solid fa-caret-up"></i></button></div>
+            <div><button form="car-form" type="submit" name="sort" value="price-desc">Price <i class="fa-solid fa-caret-down"></i></button></div>
+            <div><button form="car-form" type="submit" name="sort" value="safety">Safety rating</button></div>
+            <div><button form="car-form" type="submit" name="sort" value="sales">Best selling</button></div>
             <!-- <form action="/">
             <div class="sbheading">Filter by</div>
             <div>
@@ -85,6 +89,7 @@
                 <p>No cars found</p>
             {% endif %}
         </div>
+    </div>
     </div>
     <div id="footer">
         <a href="https://github.com/MayankArambhi" target="_blank"><i class="fa-brands fa-github"></i>/MayankArambhi</a>

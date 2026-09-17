@@ -1,10 +1,10 @@
 :root {
-    --bg: rgb(14, 18, 24);
+    /* --bg: rgb(14, 18, 24);
     --secondary-bg: rgba(28, 35, 45, 0.726);
     --more-secondary-bg: rgb(42, 52, 66);
-    --content: rgb(225, 232, 240);
+    --content: rgb(225, 232, 240); */
     --border: rgb(65, 105, 145);
-    --select: rgba(80, 170, 255, 0.25);
+    --select: rgba(22, 52, 79, 0.25);
     --headings: arial, "consolas", sans-serif;
     --normal-text: "consolas";
 }
@@ -13,6 +13,88 @@ body {
     margin: 0;
     background-color: var(--bg);
     color: var(--content);
+}
+
+#title {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    font-family: var(--headings);
+    font-size: 25px;
+}
+
+#auth {
+    display: flex;
+    justify-content: center;
+    column-gap: 50px;
+}
+
+.text-box {
+    
+    /* changes */
+    width: 80%;
+    height: 38px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 2%;
+    box-sizing: border-box;
+
+    padding: 0 5%;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    background: var(--secondary-bg);
+    color: var(--content);
+
+    font-family: var(--normal-text);
+    font-size: 15px;
+
+    outline: none;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.auth {
+    text-decoration: none;
+    text-align: center;
+    font-family: var(--normal-text);
+    color: var(--content);
+    height: 50%;
+    width: 25%;
+    padding: 35px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: linear-gradient(var(--secondary-bg), var(--more-secondary-bg));
+    transition: background 0.5s linear;
+}
+
+.auth-sub {
+    width: 250px;
+    margin-top: 15px;
+    border-radius: 3px;
+    background-color: var(--border);
+    border: 1px solid var(--select);
+    border: 0px;
+    color: var(--content);
+    font-size: 15px;
+    width: 100%;
+    padding: 7px;
+}
+
+.auth-sub:hover {
+    background-color: transparent;
+    border: 1px solid var(--select);
+}
+
+#logout-div {
+    border-radius: 6px;
+    color: var(--content);
+    margin-left: auto;
+    margin-top: 0;
+}
+
+#logout-div:hover {
+    background-color: rgba(255, 0, 0, 0.247);
 }
 
 #header {
@@ -24,6 +106,10 @@ body {
     margin: 0;
     padding: 5px;
     border-bottom: 2px solid var(--border);
+}
+
+#wrapper {
+    min-height: 85vh;
 }
 
 h1 {
@@ -95,7 +181,7 @@ h1 {
     border-color: var(--select);
 }
 
-#search-sub {
+#search-sub, #logout {
     height: 38px;
     padding: 0 16px;
 
@@ -139,7 +225,7 @@ h1 {
 #container {
     display: flex;
     justify-content: flex-start;
-    min-height: 90vh;
+    min-height: 60vh;
 }
 
 /* SIDE BAR */
@@ -166,9 +252,10 @@ form:first-child .sbheading{
 
 .sbheading {
     text-align: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     background-color: var(--more-secondary-bg);
-    border-bottom: 2px solid var(--border);
-    border-top: 2px solid var(--border);
+    border: 2px solid var(--border);
 }
 
 #sidebar:hover {
@@ -186,7 +273,7 @@ form:first-child .sbheading{
     padding: 7px;
 }
 #sidebar button:hover {
-    background: hsla(0, 0%, 100%, 0.212);
+    background: var(--select);
 }
 
 #sidebar div {
