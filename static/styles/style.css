@@ -27,6 +27,7 @@ body {
     display: flex;
     justify-content: center;
     column-gap: 50px;
+    margin-bottom: 50px;
 }
 
 .text-box {
@@ -95,6 +96,19 @@ body {
 
 #logout-div:hover {
     background-color: rgba(255, 0, 0, 0.247);
+}
+
+@media (max-width: 800px) {
+
+    #auth {
+        display: flex;
+        align-items: center;
+        row-gap: 50px;
+        flex-direction: column;
+    }
+    .auth {
+        width: 60%;
+    }
 }
 
 #header {
