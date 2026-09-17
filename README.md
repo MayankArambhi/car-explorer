@@ -1,6 +1,28 @@
 # Car explorer
 A full stack web application as a Flask learner.
 
+[Click here](https://car-explorer.onrender.com) for live demo.
+
+## Features
+- Authentication
+    - Sign up
+    - Login
+    - Logout
+    - Password hashing
+- Cars listed with...
+    - Image
+    - Model & Brand name
+    - Price
+    - Safety rating
+    - Sales
+    - Launch year
+- Individual car page
+- Individual brand page
+- Sort by...
+    - Price
+    - Safety ratings
+    - Sales
+
 ## Tech stack
 - Python
 - Flask
@@ -10,17 +32,6 @@ A full stack web application as a Flask learner.
 - HTML
 - CSS
 - Werkzeug (for password hashing)
-
-## Features
-- Authentication
-    - Sign up
-    - Login
-    - Logout
-    - Password hashing
-- Car listing with basic info
-- Individual car page
-- Individual brand page
-- Sorting by price, safety ratings, sales
 
 ## File Structure
 ```
