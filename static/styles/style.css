@@ -187,6 +187,12 @@ h1 {
     transition: background 0.2s, border-color 0.2s;
 }
 
+@media (max-width: 600px) {
+    #search-text{
+        width: 65%;
+    }
+}
+
 #search-text::placeholder {
     color: var(--content);
 }
@@ -390,8 +396,9 @@ a:hover {
     }
 
     #sidebar {
+        align-self: center;
         position: static;
-        width: auto;
+        width: 230;
         height: auto;
         margin: 10px;
     }
