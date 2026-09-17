@@ -18,7 +18,7 @@ A full stack web application as a Flask learner.
     - Launch year
 - Individual car page
 - Individual brand page
-- Searching keywords
+- Search keywords
 - Sort by...
     - Price
     - Safety ratings
