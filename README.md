@@ -40,7 +40,7 @@ car-explorer/
 ├── application/
 │   ├── database/
 │   |   └── carsdb
-│   ├── init.py
+│   ├── __init__.py
 │   ├── config.py
 │   ├── controllers.py
 │   ├── database.py
@@ -57,3 +57,37 @@ car-explorer/
 ├── app.py
 └── requirements.txt
 ```
+
+## How to run locally
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/MayankArambhi/car-explorer.git
+   cd car-explorer
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   # Windows
+   venv\Scripts\activate
+   # macOS/Linux
+   source venv/bin/activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Create environment file:
+    - Create ```.env``` file inside ```/application```.
+    - Add variable ```SECRET_KEY``` and assign it a string.
+
+5. Run the app:
+   ```bash
+   python app.py
+   ```
+
+6. Open in browser:
+http://127.0.0.1:5000
