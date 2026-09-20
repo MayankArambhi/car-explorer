@@ -81,8 +81,7 @@ car-explorer/
 4. Create environment file:
     - Create ```.env``` file inside ```/application```.
     - Add variable ```SECRET_KEY``` and assign it a string.
-    - Add variable ```PASSWORD``` as your PgSQL password.
-    - Add variable ```PORT``` as your PgSQL port no.
+    - Add variable ```DATABASE_URL``` as your PGSQL server URL.
 
 5. Run the app:
    ```bash
