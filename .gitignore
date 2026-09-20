@@ -21,5 +21,6 @@ env/
 Thumbs.db
 
 # Flask / temporary files
+database-backup/
 instance/
 *.log

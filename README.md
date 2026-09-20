@@ -38,8 +38,6 @@ A full stack web application as a Flask learner.
 ```
 car-explorer/
 ├── application/
-│   ├── database/
-│   |   └── carsdb
 │   ├── __init__.py
 │   ├── config.py
 │   ├── controllers.py
@@ -83,6 +81,8 @@ car-explorer/
 4. Create environment file:
     - Create ```.env``` file inside ```/application```.
     - Add variable ```SECRET_KEY``` and assign it a string.
+    - Add variable ```PASSWORD``` as your PgSQL password.
+    - Add variable ```PORT``` as your PgSQL port no.
 
 5. Run the app:
    ```bash
