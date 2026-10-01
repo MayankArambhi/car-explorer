@@ -23,19 +23,21 @@ A full stack web application as a Flask learner.
     - Price
     - Safety ratings
     - Sales
+- Wishlisting
 
 ## Tech stack
 - Python
 - Flask
 - SQLAlchemy
-- SQLite
-- DBeaver
+- PostgreSQL
 - HTML
 - CSS
+- JavaScript
 - Werkzeug (for password hashing)
 
 ## File Structure
 ```
+
 car-explorer/
 ├── application/
 │   ├── __init__.py
@@ -44,7 +46,10 @@ car-explorer/
 │   ├── database.py
 │   └── models.py
 ├── static/
-│   ├── media/cars/ (contains images of cars)
+│   ├── media/cars/ (for car images but NOT AN IDEAL WAY)
+│   ├── scripts
+|   │   ├── script1.py
+│   |   └── script2.py
 │   └── styles/
 |       └── style.css
 ├── templates/
@@ -52,8 +57,12 @@ car-explorer/
 │   ├── brand.html
 │   ├── car.html
 │   └── index.html
+├── .gitignore
 ├── app.py
+├── LICENSE
+├── README.md
 └── requirements.txt
+
 ```
 
 ## How to run locally
