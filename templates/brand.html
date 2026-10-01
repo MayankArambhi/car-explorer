@@ -83,6 +83,13 @@
                     <div class="card-text">Launch year: {{car.launch_date}}</div>
                     <div class="card-text">Safety rating: {{car.safety_rating}}</div>
                     <div class="card-text">Sold units: {{car.sales_count}}</div>
+                    <div class="wl-div">
+                        {% if car.wishlist %}
+                        <button class="wishlist" id="wl-{{ car.car_id }}" onclick="rem_wishlist({{ car.car_id }})">- Wishlist</button>
+                        {% else %}
+                        <button class="wishlist" id="wl-{{ car.car_id }}" onclick="add_wishlist({{ car.car_id }})">+ Wishlist</button>
+                        {% endif %}
+                    </div>
                 </div>
                 
                 {% endfor %}
@@ -95,5 +102,6 @@
     <div id="footer">
         <a href="https://github.com/MayankArambhi" target="_blank"><i class="fa-brands fa-github"></i>/MayankArambhi</a>
     </div>
+    <script src="{{ url_for('static', filename='scripts/script2.js') }}"></script>
 </body>
 </html>

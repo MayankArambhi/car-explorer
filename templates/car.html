@@ -14,7 +14,10 @@
     <div id="wrapper">
     <div id="container">
         <div id="content">
-            Will be back once I learn java script (hopefully)
+            <div>
+                <button id="show-details" onclick="fetch_car({{car.car_id}})">Show details</button>
+                <div id="details"></div>
+            </div>
             <br>
             <a href="/">Go back</a>
         </div>
@@ -27,5 +30,6 @@
     <div id="footer">
         <a href="https://github.com/MayankArambhi" target="_blank"><i class="fa-brands fa-github"></i>/MayankArambhi</a>
     </div>
+    <script src="{{ url_for('static', filename='scripts/script1.js') }}"></script>
 </body>
 </html>

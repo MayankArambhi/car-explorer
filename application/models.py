@@ -18,6 +18,7 @@ class Cars(db.Model):
     safety_rating = db.Column(db.Float)
     sales_count = db.Column(db.Integer)
     price = db.Column(db.Integer)
+    wishlist = False
 
 class Images(db.Model):
     __tablename__ = 'images'
@@ -36,3 +37,10 @@ class Users(db.Model):
     username = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
+
+class Wishlist(db.Model):
+    __tablename__ = 'wishlist'
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), primary_key=True)
+    car_id = db.Column(db.Integer, db.ForeignKey('cars.car_id'), primary_key=True)
+    car = db.relationship("Cars", backref='cars')
+    user = db.relationship("Users", backref='users')

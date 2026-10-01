@@ -35,6 +35,12 @@
             <div><button form="car-form" type="submit" name="sort" value="price-desc">Price <i class="fa-solid fa-caret-down"></i></button></div>
             <div><button form="car-form" type="submit" name="sort" value="safety">Safety rating</button></div>
             <div><button form="car-form" type="submit" name="sort" value="sales">Best selling</button></div>
+
+            <!-- <div id="user-det">
+                <button>See wishlist</button>
+                USERNAME
+                <button>Logout</button>
+            </div> -->
             <!-- <form action="/">
             <div class="sbheading">Filter by</div>
             <div>
@@ -82,6 +88,13 @@
                     <div class="card-text">Launch year: {{car.launch_date}}</div>
                     <div class="card-text">Safety rating: {{car.safety_rating}}</div>
                     <div class="card-text">Sold units: {{car.sales_count}}</div>
+                    <div class="wl-div">
+                        {% if car.wishlist %}
+                        <button class="wishlist" id="wl-{{ car.car_id }}" onclick="rem_wishlist({{ car.car_id }})">- Wishlist</button>
+                        {% else %}
+                        <button class="wishlist" id="wl-{{ car.car_id }}" onclick="add_wishlist({{ car.car_id }})">+ Wishlist</button>
+                        {% endif %}
+                    </div>
                 </div>
                 
                 {% endfor %}
@@ -94,5 +107,6 @@
     <div id="footer">
         <a href="https://github.com/MayankArambhi" target="_blank"><i class="fa-brands fa-github"></i>/MayankArambhi</a>
     </div>
+    <script src="{{ url_for('static', filename='scripts/script2.js') }}"></script>
 </body>
 </html>

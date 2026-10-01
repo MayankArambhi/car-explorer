@@ -1,9 +1,9 @@
-from flask import render_template, session, request, redirect, url_for
+from flask import render_template, session, request, redirect, url_for, jsonify
 from werkzeug.security import check_password_hash, generate_password_hash
 from application import app
 from application.database import db
 from sqlalchemy import or_
-from application.models import Cars, Brands, Users
+from application.models import Cars, Brands, Users, Wishlist
 
 @app.route("/authentication")
 def auth():
@@ -67,6 +67,7 @@ def logout():
 @app.route("/")
 def home():
     user_id = session.get("user_id", "")
+
     if not user_id:
         return redirect(url_for("auth"))
     
@@ -91,6 +92,13 @@ def home():
     elif sort=="sales":
         query = query.order_by(Cars.sales_count.desc())
     cars = query.all()
+
+    # WISHLIST
+    wishlist = Wishlist.query.filter_by(user_id=user_id).all()
+    for item in wishlist:
+        for car in cars:
+            if item.car_id == car.car_id:
+                car.wishlist = True
 
     l = len(cars)
     return render_template("index.html", cars=cars, search=search, sort=sort, number = l)
@@ -133,6 +141,53 @@ def brand(brand_id):
     elif sort=="sales":
         query = query.order_by(Cars.sales_count.desc())
     cars = query.all()
+
+    # WISHLIST
+    wishlist = Wishlist.query.filter_by(user_id=user_id).all()
+    for item in wishlist:
+        for car in cars:
+            if item.car_id == car.car_id:
+                car.wishlist = True
     
     l = len(list(cars))
     return render_template("brand.html", cars=cars, search=search, number = l, brand=brand)
+
+@app.route("/car-details/<int:car_id>")
+def car_details(car_id):
+    car = Cars.query.filter_by(car_id=car_id).first()
+    brand = car.brand.brand_name
+    car_name = car.car_name
+    type = car.type.type_name
+    result = {
+        "name": car_name, 
+        "brand": brand, 
+        "price": car.price,
+        "body_type": type,
+        "launch_date": car.launch_date,
+        "safety": car.safety_rating,
+        "sales": car.sales_count
+        }
+    return jsonify(result)
+
+@app.route("/atw/<int:car_id>")
+def add_to_wishlist(car_id):
+    user_id = session.get("user_id")
+    if Wishlist.query.filter_by(user_id=user_id, car_id=car_id).first():
+        print("wrong func (called: add)")
+        return "0"
+    db.session.add(Wishlist(user_id=user_id, car_id=car_id))
+    db.session.commit()
+    print(f"added {user_id}, {car_id}")
+    return "1"
+
+@app.route("/rfw/<int:car_id>")
+def remove_from_wishlist(car_id):
+    user_id = session.get("user_id")
+    item = Wishlist.query.filter_by(user_id=user_id, car_id=car_id).first()
+    if item:
+        db.session.delete(item)
+        db.session.commit()
+        print(f"removed {user_id}, {car_id}")
+        return "1"
+    print("wrong func (called: rem)")
+    return "0"

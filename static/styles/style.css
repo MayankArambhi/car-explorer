@@ -329,7 +329,7 @@ form:first-child .sbheading{
     min-height: 250px;
     width: 230px;
     border: 1px solid var(--border);
-    border-radius: 5px;
+    border-radius: 10px;
     background: linear-gradient(var(--secondary-bg), var(--more-secondary-bg));
     transition: background 0.5s linear;
 }
@@ -370,6 +370,27 @@ a:hover {
     height: 150px;
     width: 220px;
     overflow: hidden;
+}
+
+.wl-div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wishlist {
+    height: 100%;
+    width: 90%;
+    background-color: white;
+    border: 1px solid purple;
+    border-radius: 8px;
+}
+
+.wishlist:hover {
+    background-color: rgba(136, 0, 255, 0.1);
 }
 
 .img img {
