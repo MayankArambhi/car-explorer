@@ -52,7 +52,7 @@ car-explorer/
 │   ├── database.py
 │   └── models.py
 ├── static/
-│   ├── media/cars/ (for car images but NOT AN IDEAL WAY)
+│   ├── media/cars/ (images)
 │   ├── scripts
 |   │   ├── script1.js
 |   │   ├── script2.js

@@ -1,7 +1,5 @@
 // ASYNCHRONOUS WISHLIST
 
-const btn = document.getElementById(`wl-${car_id}`);
-
 async function add_wishlist(car_id){
     const response = await fetch(`/atw/${car_id}`);
     const data = await response.text();
@@ -9,6 +7,7 @@ async function add_wishlist(car_id){
         alert("Car already exist in wishlist");
         return;
     }
+    const btn = document.getElementById(`wl-${car_id}`);
     await btn.setAttribute("onclick", `rem_wishlist(${car_id})`);
     btn.innerHTML = await "- Wishlist";
 }
@@ -20,6 +19,7 @@ async function rem_wishlist(car_id){
         alert("Car doesn't exist in your wishlist");
         return;
     }
+    const btn = document.getElementById(`wl-${car_id}`);
     await btn.setAttribute("onclick", `add_wishlist(${car_id})`);
     btn.innerHTML = await "+ Wishlist";
 }
