@@ -205,11 +205,9 @@ def car_details(car_id):
 def add_to_wishlist(car_id):
     user_id = session.get("user_id")
     if Wishlist.query.filter_by(user_id=user_id, car_id=car_id).first():
-        print("wrong func (called: add)")
         return "0"
     db.session.add(Wishlist(user_id=user_id, car_id=car_id))
     db.session.commit()
-    print(f"added {user_id}, {car_id}")
     return "1"
 
 @app.route("/rfw/<int:car_id>")
@@ -219,7 +217,5 @@ def remove_from_wishlist(car_id):
     if item:
         db.session.delete(item)
         db.session.commit()
-        print(f"removed {user_id}, {car_id}")
         return "1"
-    print("wrong func (called: rem)")
     return "0"
