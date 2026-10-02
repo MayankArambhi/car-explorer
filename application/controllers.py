@@ -64,6 +64,38 @@ def logout():
     session.clear()
     return redirect(url_for("auth"))
 
+@app.route("/login-page")
+def login_page():
+    return """
+<div class="auth">
+    <form action="/login" id="login" method="POST">
+        <input class="text-box" type="text" name="username" placeholder="Username or Email" required>
+        <input class="text-box" type="password" name="password" placeholder="Password" required>
+        <br><button type="submit" class="auth-sub">Login</button>
+    </form>
+    <div id="auth-msg">
+    Don't have an account? <button onclick="signup()">Sign Up</button>
+    </div>
+</div>
+"""
+
+@app.route("/signup-page")
+def signup_page():
+    return """
+<div class="auth">
+    <form action="/signup" id="signup" method="POST">
+        <input class="text-box" type="text" name="username" placeholder="Username" required>
+        <input class="text-box" type="email" name="email" placeholder="Email" required>
+        <input class="text-box" type="password" name="password" placeholder="Password" required>
+        <input class="text-box" type="password" name="conf-password" placeholder="Confirm password" required>
+        <br><button type="submit" class="auth-sub">Sign Up</button>
+    </form>
+    <div id="auth-msg">
+    Already have an account? <button onclick="login()">Log In</button>
+    </div>
+</div>
+"""
+
 @app.route("/")
 def home():
     user_id = session.get("user_id", "")

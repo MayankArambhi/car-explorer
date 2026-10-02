@@ -1,3 +1,5 @@
+// ASYNCHRONOUS CAR DETAILS FETCH
+
 async function fetch_car(car_id) {
     const det = await fetch(`/car-details/${car_id}`);
     const data = await det.json();
