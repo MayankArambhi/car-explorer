@@ -54,9 +54,9 @@ car-explorer/
 ├── static/
 │   ├── media/cars/ (for car images but NOT AN IDEAL WAY)
 │   ├── scripts
-|   │   ├── script1.py
-|   │   ├── script2.py
-│   |   └── script3.py
+|   │   ├── script1.js
+|   │   ├── script2.js
+│   |   └── script3.js
 │   └── styles/
 |       └── style.css
 ├── templates/
