@@ -9,6 +9,7 @@ A full stack web application as a Flask learner.
     - Login
     - Logout
     - Password hashing
+
 - Cars listed with...
     - Image
     - Model & Brand name
@@ -16,13 +17,18 @@ A full stack web application as a Flask learner.
     - Safety rating
     - Sales
     - Launch year
+
 - Individual car page
+
 - Individual brand page
+
 - Search keywords
+
 - Sort by...
     - Price
     - Safety ratings
     - Sales
+    
 - Wishlisting
 
 ## Tech stack
@@ -49,7 +55,8 @@ car-explorer/
 │   ├── media/cars/ (for car images but NOT AN IDEAL WAY)
 │   ├── scripts
 |   │   ├── script1.py
-│   |   └── script2.py
+|   │   ├── script2.py
+│   |   └── script3.py
 │   └── styles/
 |       └── style.css
 ├── templates/
